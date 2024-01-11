@@ -8,7 +8,7 @@ const descriptionInput = document.createElement("input");
 // Set attributes for the input element
 descriptionInput.type = "text";
 descriptionInput.name = "fruitDescription";
-descriptionInput.id = "fruit-description";
+descriptionInput.id = "description";
 
 // Insert the input element before the button
 form.insertBefore(descriptionInput, button);
@@ -51,8 +51,11 @@ fruitFilter.addEventListener("keyup", function (e) {
     const currentFruit = fruitList[i].firstChild.textContent.toLowerCase();
     const currentFruitDescription =
       fruitList[i].firstElementChild.textContent.toLowerCase();
-    if (currentFruit.indexOf(textEntered) === -1)
-      fruitList[i].style.display = "none";
-    else fruitList[i].style.display = "flex";
+    if (
+      currentFruit.includes(textEntered) ||
+      currentFruitDescription.includes(textEntered)
+    )
+      fruitList[i].style.display = "flex";
+    else fruitList[i].style.display = "none";
   }
 });
